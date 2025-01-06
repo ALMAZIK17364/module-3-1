@@ -1,30 +1,17 @@
-global calls
 calls = 0
 
 def count_calls():
     global calls
     calls += 1
 
-def string_info(baseStr = ""):
-    newStr = []
+def string_info(string):
     count_calls()
+    return (len(string), string.upper(), string.lower())
 
-
-    newStr.append(str(len(baseStr)))
-    newStr.append(baseStr.upper())
-    newStr.append(baseStr.lower())
-
-    newTuple = tuple(newStr)
-
-    return(newTuple)
-
-def is_contains(needWord = "", wordList = []):
+def is_contains(string, list_to_search):
     count_calls()
-    for i in wordList:
-        if i == needWord:
-            return True
-            break
-    return False
+    string_lower = string.lower()
+    return string_lower in (item.lower() for item in list_to_search)
 
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
